@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,7 +60,7 @@ namespace DM_1
             //1+1+1+1
             if (digitsCount.Count >= 4)
             {
-                count += Factorial(digitsCount.Count);
+                count += Factorial(digitsCount.Count)/Factorial(digitsCount.Count-4);
             }
                 
             //4
@@ -83,11 +83,9 @@ namespace DM_1
             }
 
             //2+2
-            foreach (KeyValuePair<int, int> entry in digitsCount)
-            {
+
                 //если эта цифра повторяется 2 или больше раз, то
-                if (entry.Value >= 2 && digitsCount.Count > 1)
-                {
+            
                     //ищем количесво цифр, которые повторяются больше 2-х раз
                     int k = digitsCount.Count(pair => pair.Value >= 2);
                    
@@ -95,28 +93,22 @@ namespace DM_1
                     if (k > 1)
                     {
                         //используем формулу сочетаний
-                        count += Combination(k, digitsCount.Count);
-                        break;
+                        //count += Combination(k, digitsCount.Count);
+                        count += 2 * 3 * Combination(2, k);
+          
                     }
-                }
-            }
+                
+            
 
-            //2+1+1+1
-            foreach (KeyValuePair<int, int> entry in digitsCount)
-            {
-                //если эта цифра повторяется 2 или больше раз, то
-                if (entry.Value >= 2 && digitsCount.Count > 1)
-                {
-                    //ищем количесво цифр, которые повторяются больше 2-х раз
-                    int k = digitsCount.Count(pair => pair.Value >= 2);
+            //2+1+1
+           
                     //проверим больше чем 1 такая цифра
                     if (k > 1)
                     {
-                        count += k * Combination(k, digitsCount.Count) * Factorial(digitsCount.Count - 1);
-                        break;
+                        //count += k * Combination(k, digitsCount.Count) * Factorial(digitsCount.Count - 1);
+                        count +=  2*3 * k * (digitsCount.Count - 1) * (digitsCount.Count - 2);
                     }
-                }
-            }
+
 
             Console.WriteLine($"Количество 4-х значных чисел = {count}");
         }
