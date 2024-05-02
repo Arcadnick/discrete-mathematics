@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -48,11 +48,21 @@ namespace DM_2
             var N = int.Parse(Console.ReadLine());
 
             Dictionary<int, int> digitsCount = CountDigits(N);
+            var sum = 0;
+            var totalCount = digitsCount.Values.Sum(v=>v);
+            var totalPermutations = Factorial(totalCount);
 
-            foreach (KeyValuePair<int, int> entry in digitsCount)
+            foreach (var pair in digitsCount)
             {
-                Factorial(digitsCount.Count - 1) / ();
+                totalPermutations /=Factorial(pair.Value);
             }
+            var digitSum = digitsCount.Sum(x => x.Key * x.Value);
+            foreach (var pair in digitsCount)
+            {
+                int digitContrib = pair.Key * (totalPermutations/totalCount) *digitSum;
+                sum += digitContrib;
+            }
+            Console.WriteLine(sum);
         }
     }
 }
