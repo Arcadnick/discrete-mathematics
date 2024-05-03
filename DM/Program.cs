@@ -52,11 +52,11 @@ namespace DM_1
         static void Main()
         {
             int count = 0;
-            Console.WriteLine("Задача:\nСколькл 4-х значных чисел можно составить из цифр числа N?");
-            Console.WriteLine("Введите N");
-            var N = int.Parse(Console.ReadLine());
+            Console.WriteLine("Задача:\nСколькл 4-х значных чисел можно составить из цифр числа X?");
+            Console.WriteLine("Введите X");
+            var X = int.Parse(Console.ReadLine());
 
-            Dictionary<int, int> digitsCount = CountDigits(N);
+            Dictionary<int, int> digitsCount = CountDigits(X);
             //1+1+1+1
             if (digitsCount.Count >= 4)
             {
@@ -82,33 +82,23 @@ namespace DM_1
                 }
             }
 
-            //2+2
+            //ищем количесво цифр, которые повторяются больше 2-х раз
+            int k = digitsCount.Count(pair => pair.Value >= 2);
 
-                //если эта цифра повторяется 2 или больше раз, то
-            
-                    //ищем количесво цифр, которые повторяются больше 2-х раз
-                    int k = digitsCount.Count(pair => pair.Value >= 2);
-                   
-                    //проверим больше чем 1 такая цифра
-                    if (k > 1)
-                    {
-                        //используем формулу сочетаний
-                        //count += Combination(k, digitsCount.Count);
-                        count += 2 * 3 * Combination(2, k);
-          
-                    }
-                
-            
+            //2+2
+            //проверим больше чем 1 такая цифра
+            if (k > 1)
+            {
+                //используем формулу сочетаний
+                count += 2 * 3 * Combination(2, k);
+            }
 
             //2+1+1
-           
-                    //проверим больше чем 1 такая цифра
-                    if (k > 1)
-                    {
-                        //count += k * Combination(k, digitsCount.Count) * Factorial(digitsCount.Count - 1);
-                        count +=  2*3 * k * (digitsCount.Count - 1) * (digitsCount.Count - 2);
-                    }
-
+            //проверим больше чем 1 такая цифра
+            if (k > 1)
+            {
+                count += 2 * 3 * k * (digitsCount.Count - 1) * (digitsCount.Count - 2);
+            }
 
             Console.WriteLine($"Количество 4-х значных чисел = {count}");
         }

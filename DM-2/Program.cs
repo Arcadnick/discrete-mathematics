@@ -43,26 +43,43 @@ namespace DM_2
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Задача:\nЧему равна сумма всех чисел, являющихся перестановкой цифр числа N?");
-            Console.WriteLine("Введите N");
-            var N = int.Parse(Console.ReadLine());
+            long sum = 0;
+            Console.WriteLine("Задача:\nЧему равна сумма всех чисел, являющихся перестановкой цифр числа X?");
+            Console.WriteLine("Введите X");
+            string input = Console.ReadLine();
+            int n = input.Length;
 
-            Dictionary<int, int> digitsCount = CountDigits(N);
-            var sum = 0;
-            var totalCount = digitsCount.Values.Sum(v=>v);
-            var totalPermutations = Factorial(totalCount);
+            Dictionary<int, int> digitsCount = CountDigits(int.Parse(input));
 
-            foreach (var pair in digitsCount)
+            var numerator = Factorial(n - 1);
+
+            foreach (KeyValuePair<int, int> pair in digitsCount)
             {
-                totalPermutations /=Factorial(pair.Value);
+                int label = pair.Key;
+                var denominator = 1;
+
+                foreach (KeyValuePair<int, int> entry in digitsCount)
+                {
+                    if (label == entry.Key)
+                    {
+                        denominator *= Factorial(entry.Value - 1);
+                    }
+                    else
+                    {
+                        denominator *= Factorial(entry.Value);
+                    }
+                }
+                sum += label * (numerator / denominator);
             }
-            var digitSum = digitsCount.Sum(x => x.Key * x.Value);
-            foreach (var pair in digitsCount)
+
+            //собираем величие(число из n едениц)
+            long greatness = 0;
+            for (int i = 0; i < n; i++)
             {
-                int digitContrib = pair.Key * (totalPermutations/totalCount) *digitSum;
-                sum += digitContrib;
+                greatness = (greatness * 10) + 1;
             }
-            Console.WriteLine(sum);
+
+            Console.WriteLine($"Сумма всех перестановок = {sum * greatness} ");
         }
     }
 }
