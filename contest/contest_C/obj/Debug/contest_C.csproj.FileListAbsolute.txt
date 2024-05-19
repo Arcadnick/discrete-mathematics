@@ -1,0 +1,7 @@
+C:\Users\arcad\source\repos\Arcadnick\discrete-mathematics\contest\contest_C\bin\Debug\contest_C.exe.config
+C:\Users\arcad\source\repos\Arcadnick\discrete-mathematics\contest\contest_C\bin\Debug\contest_C.exe
+C:\Users\arcad\source\repos\Arcadnick\discrete-mathematics\contest\contest_C\bin\Debug\contest_C.pdb
+C:\Users\arcad\source\repos\Arcadnick\discrete-mathematics\contest\contest_C\obj\Debug\contest_C.csproj.AssemblyReference.cache
+C:\Users\arcad\source\repos\Arcadnick\discrete-mathematics\contest\contest_C\obj\Debug\contest_C.csproj.CoreCompileInputs.cache
+C:\Users\arcad\source\repos\Arcadnick\discrete-mathematics\contest\contest_C\obj\Debug\contest_C.exe
+C:\Users\arcad\source\repos\Arcadnick\discrete-mathematics\contest\contest_C\obj\Debug\contest_C.pdb
